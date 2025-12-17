@@ -1,7 +1,7 @@
 using System.Net;
 using Studently.Common.Exception;
 
-namespace Studently.Features.User.Entity;
+namespace Studently.Authentication.Entity;
 
 public class AuthenticationErrorCode : IErrorCode
 {

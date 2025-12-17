@@ -2,22 +2,20 @@ namespace Studently.User.Entity;
 
 public class User
 {
-    private Guid Id { get; set; }
-
-    private string Name {get; set;}
-
-    private string Email{get; set;}
-
-    private DateTime CreatedAt { get; set; }
-
-    private DateTime UpdatedAt { get; set; }
+    internal Guid Id { get; private set; }
+    internal string Name { get; private set; }
+    internal string Email { get; private set; }
+    internal DateTime CreatedAt { get; private set; }
+    internal DateTime UpdatedAt { get; private set; }
 
     protected User()
     {
         Id = Guid.NewGuid();
+        Name = string.Empty;
+        Email = string.Empty;
     }
 
-    internal User(UserBuilder builder)
+    public User(UserBuilder builder)
     {
         Id = Guid.NewGuid();
         Name = builder.Name;

@@ -1,8 +1,9 @@
 using System.Net;
+using Studently.Common.Exception;
 
 namespace Studently.User.Entity;
 
-public class UserErrorCode : Studently.Common.Exception.IErrorCode
+public class UserErrorCode : IErrorCode
 {
     public static readonly UserErrorCode UserNotFound =
         new("USER_001", "User not found with {0}: {1}", HttpStatusCode.NotFound);
@@ -30,6 +31,10 @@ public class UserErrorCode : Studently.Common.Exception.IErrorCode
 
     public static readonly UserErrorCode EmailAlreadyInUse =
         new("USER_009", "Email already in use: {0}", HttpStatusCode.Conflict);
+
+    public string Code { get; }
+    public string MessageTemplate { get; }
+    public HttpStatusCode HttpStatusCode { get; }
 
     private UserErrorCode(string code, string messageTemplate, HttpStatusCode httpStatusCode)
     {

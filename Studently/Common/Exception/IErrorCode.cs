@@ -1,13 +1,15 @@
+using System.Net;
+
 namespace Studently.Common.Exception;
 
 public interface IErrorCode
 {
-    protected string Code { public get; }
-    protected string MessageTemplate { public get; }
-    protected int HttpStatusCode { public get; }
+    public string Code { get; }
+    public string MessageTemplate { get; }
+    public HttpStatusCode HttpStatusCode { get; }
 
     public string GetMessage(params object[] args)
     {
-        return string.Format(MessageTemplate, args);
+        return string.Format(this.MessageTemplate, args);
     }
 }

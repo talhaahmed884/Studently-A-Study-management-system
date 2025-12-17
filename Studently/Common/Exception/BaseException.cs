@@ -5,10 +5,6 @@ public abstract class BaseException : System.Exception
     public IErrorCode ErrorCode { get; }
     public object[] Args { get; }
 
-    public string GetCode() {
-        return ErrorCode.GetCode();
-    }
-
     protected BaseException(IErrorCode errorCode, params object[] args)
         : base(errorCode.GetMessage(args))
     {
